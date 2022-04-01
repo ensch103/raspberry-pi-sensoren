@@ -1,0 +1,6 @@
+sudo date MMTThhmm(-)JJ
+	um die Uhrzeit und den Tag manuell einzustellen
+
+sudo nano mq-7.py
+sudo wget --no-check-certificate   http://osoyoo.com/driver/mq-7.py
+sudo python ./mq-7.py
