@@ -25,18 +25,21 @@ def calc_voltage(value, vc):
 def calc_resistance(volt, rl, vc):
     return ((vc / volt) - 1) * rl
 
-def MQGetGasPercentage(self, rs_ro_ratio, gas_id):
-    if (gas_id == self.GAS_LPG):
-        return self.MQGetPercentage(rs_ro_ratio, self.LPGCurve)
-    elif (gas_id == self.GAS_CO):
-        return self.MQGetPercentage(rs_ro_ratio, self.COCurve)
-    elif (gas_id == self.GAS_OZON):
-        return self.MQGetPercentage(rs_ro_ratio, self.OzoneCurve)
-    elif (gas_id == self.GAS_LQ):
-        return self.MQGetPercentage(rs_ro_ratio, self.AirQualityCurve)
+def MQGetGasPercentage(rs_ro_ratio, gas_id):
+    if (gas_id == GAS_LPG):
+        return MQGetPercentage(rs_ro_ratio, y_lpg, steigung_lpg)
+    elif (gas_id == GAS_CO):
+        return MQGetPercentage(rs_ro_ratio, y_co, steigung_co)
+    elif (gas_id == GAS_OZON):
+        return MQGetPercentage(rs_ro_ratio, y_ozon, steigung_ozon)
+    elif (gas_id == GAS_LQ):
+        return MQGetPercentage(rs_ro_ratio, y_lq, steigung_lq)
     return 0
 
-def MQGetPercentage(self, rs_ro_ratio, pcurve):
+def MQGetPercentage(rs_ro_ratio, y_achsenabschnitt, steigung):
     return 0
     # y = mx+b
-    #return (math.pow(10, (((math.log10(rs_ro_ratio) - pcurve[1]) / pcurve[2]) + pcurve[0])))
+    # x = (y - b) / m
+    # 10, (((math.log10(rs_ro_ratio) - pcurve[1]) / pcurve[2]) + pcurve[0]))
+    concentration_ppm = math.pow10((rs_ro_ratio - y_achsenabschnitt) / steigung)
+    return concentration_ppm

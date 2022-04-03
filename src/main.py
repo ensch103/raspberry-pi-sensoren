@@ -26,7 +26,7 @@ try:
     print("Press CTRL+C to abort.")
     #mq = MQ()
 
-    ro = helper.read_file("Ro.txt")
+    ro = helper.read_file("calibrated.txt")
     ro_lpg  = ro[0]
     ro_co   = ro[1]
     ro_ozon = ro[2]
