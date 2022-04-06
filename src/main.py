@@ -31,7 +31,7 @@ try:
     ro_ozon = float(ro[2])
     ro_lq   = float(ro[3])
 
-    values = helper.read_file("curves_backup.txt")
+    values = helper.read_file("curves_reference.txt")
     mq7_steigung_CO  = float(values[0])
     mq7_y_CO         = float(values[1])
     mq7_steigung_LPG = float(values[2])
@@ -58,7 +58,7 @@ try:
         rs_mq131 = helper.calc_resistance(volt_mq131, rl_mq131, vc)
         rs_mq135 = helper.calc_resistance(volt_mq135, rl_mq135, vc)
 
-        print("value_mq4: %.2fV    value_mq7: %.2fV    value_mq131: %.2fV    value_mq135: %.2fV" % (value_mq4, value_mq7, value_mq131, value_mq135)) #TODO: remove
+        print("value_mq4: %.2f    value_mq7: %.2f    value_mq131: %.2f    value_mq135: %.2f" % (value_mq4, value_mq7, value_mq131, value_mq135)) #TODO: remove
         print("volt_mq4: %.2fV    volt_mq7: %.2fV    volt_mq131: %.2fV    volt_mq135: %.2fV" % (volt_mq4, volt_mq7, volt_mq131, volt_mq135)) #TODO: remove
         print("Rs_LPG: %.2f Ohm   Rs_CO: %.2f Ohm   Rs_Ozon: %.2f Ohm   Rs_LQ: %.2f Ohm" % (rs_mq4, rs_mq7, rs_mq131, rs_mq135)) #TODO: remove
 

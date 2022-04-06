@@ -29,10 +29,10 @@ try:
 
     #berechnete Werte für ro in Datei "calibrated.txt" schreiben (Reihenfolge: mq4, mq7, mq131, mq135)
     with open("calibrated.txt", "w") as file:
-        file.write("%f" % (ro_mq4))
-        file.write("%f" % (ro_mq7))
-        file.write("%f" % (ro_mq131))
-        file.write("%f" % (ro_mq135))
+        file.write("%f\n" % (ro_mq4))
+        file.write("%f\n" % (ro_mq7))
+        file.write("%f\n" % (ro_mq131))
+        file.write("%f\n" % (ro_mq135))
 
 except KeyboardInterrupt:
     print("Abbruch durch User")

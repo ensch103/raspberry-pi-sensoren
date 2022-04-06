@@ -15,7 +15,7 @@ def MQCalibration(mq_pin, ro_clean_air_factor, rl, vc):
     adc = MCP3008()
     val = 0.0
     for i in range(CALIBARAION_SAMPLE_TIMES):  # take multiple samples
-        volt = calc_voltage(adc.read(mq_pin, vc))
+        volt = calc_voltage(adc.read(mq_pin), vc)
         val += calc_resistance(volt, rl, vc)
         time.sleep(CALIBRATION_SAMPLE_INTERVAL / 1000.0)
 
