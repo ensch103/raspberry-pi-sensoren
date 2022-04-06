@@ -55,12 +55,12 @@ def get_Straight(ppm, ratio):
     return a, b #a:Steigung b:y-Achsenabschnitt
 
 def write_curve_data():
-    mq4_steigung_CH4, mq4_y_CH4 = get_Straight(ppm_mq4_CH4, ratio_mq4_CH4)
-    mq7_steigung_CO, mq7_y_CO = get_Straight(ppm_mq7_CO, ratio_mq7_CO)
-    mq131_steigung_ozon, mq131_y_ozon = get_Straight(ppm_mq131_Ozon, ratio_mq131_Ozon)
-    mq135_steigung_toluol, mq135_y_toluol = get_Straight(ppm_mq135_toluol, ratio_mq135_toluol)
-    mq135_steigung_NH3, mq135_y_NH3 = get_Straight(ppm_mq135_NH3, ratio_mq135_NH3)
-    mq135_steigung_H2, mq135_y_H2 = get_Straight(ppm_mq135_H2, ratio_mq135_H2)
+    mq4_steigung_CH4,       mq4_y_CH4      = get_Straight(ppm_mq4_CH4, ratio_mq4_CH4)
+    mq7_steigung_CO,        mq7_y_CO       = get_Straight(ppm_mq7_CO, ratio_mq7_CO)
+    mq131_steigung_ozon,    mq131_y_ozon   = get_Straight(ppm_mq131_Ozon, ratio_mq131_Ozon)
+    mq135_steigung_toluol,  mq135_y_toluol = get_Straight(ppm_mq135_toluol, ratio_mq135_toluol)
+    mq135_steigung_NH3,     mq135_y_NH3    = get_Straight(ppm_mq135_NH3, ratio_mq135_NH3)
+    mq135_steigung_H2,      mq135_y_H2     = get_Straight(ppm_mq135_H2, ratio_mq135_H2)
     with open("curves.txt", "w") as file:
         file.write("%f\n%f\n" %(mq4_steigung_CH4, mq4_y_CH4))
         file.write("%f\n%f\n" %(mq7_steigung_CO, mq7_y_CO))
@@ -70,4 +70,4 @@ def write_curve_data():
         file.write("%f\n%f\n" %(mq135_steigung_H2, mq135_y_H2))
     file.close()
 
-write_curve_data()
+#write_curve_data()
