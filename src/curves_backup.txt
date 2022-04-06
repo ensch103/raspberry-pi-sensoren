@@ -1,0 +1,20 @@
+-0.603587
+0.843695
+-0.535174
+-0.114295
+0.459057
+0.905463
+-0.402163
+0.264031
+-0.432837
+0.255559
+-0.491111
+0.256128
+
+
+mq4_steigung_CH4, mq4_y_CH4))
+mq7_steigung_CO, mq7_y_CO))
+mq131_steigung_ozon, mq131_y_ozon))
+        file.write("%f\n%f\n" %(mq135_steigung_toluol, mq135_y_toluol))
+        file.write("%f\n%f\n" %(mq135_steigung_NH3, mq135_y_NH3))
+        file.write("%f\n%f\n" %(mq135_steigung_H2, mq135_y_H2))

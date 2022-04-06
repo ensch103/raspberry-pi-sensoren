@@ -3,18 +3,23 @@ import numpy.linalg as la
 import matplotlib.pyplot as plt
 
 '''MQ4 data'''
-#TODO: MQ4, MQ131, MQ135 Geraden
+ppm_mq4_CH4   = [400, 1000, 2000, 5000, 9000]
+ratio_mq4_CH4 = [0.2, 0.1, 0.07, 0.04, 0.03]
 '''MQ7 data'''
-ppm_CO    = [50, 100, 400, 1000, 4000]
-ratio_CO  = [1.58, 1., 0.363, 0.218, 0.087]
-
-ppm_LPG   = [50, 100, 400, 1000, 4000]
-ratio_LPG = [9., 8., 6.6, 6., 5.]
-
-ppm_CH4   = [50, 100, 400, 1000, 4000]
-ratio_CH4 = [14.17, 13.53, 12.33, 11.5 , 9]
+ppm_mq7_CO   = [10, 100, 400, 1000]
+ratio_mq7_CO = [0.23, 0.063, 0.03, 0.02]
 '''MQ131 data'''
+ppm_mq131_Ozon   = [0.01, 0.05, 0.1, 0.2, 0.5, 1]
+ratio_mq131_Ozon = [1, 2, 2.6, 4, 6, 8]
 '''MQ135 data'''
+ppm_mq135_toluol   = [10, 100, 200, 500, 1000]
+ratio_mq135_toluol = [0.7, 0.31, 0.22, 0.15, 0.11]
+
+ppm_mq135_NH3   = [10, 100, 200, 500, 1000]
+ratio_mq135_NH3 = [0.65, 0.26, 0.18, 0.12, 0.09]
+
+ppm_mq135_H2   = [10, 100, 200, 500, 1000]
+ratio_mq135_H2 = [0.57, 0.2, 0.13, 0.085, 0.06]
 
 def get_Straight(ppm, ratio):
     assert len(ppm) == len(ratio)
@@ -50,14 +55,19 @@ def get_Straight(ppm, ratio):
     return a, b #a:Steigung b:y-Achsenabschnitt
 
 def write_curve_data():
-    mq7_steigung_CO, mq7_y_CO = get_Straight(ppm_CO, ratio_CO)
-    mq7_steigung_LPG, mq7_y_LPG = get_Straight(ppm_LPG, ratio_LPG)
-    mq7_steigung_CH4, mq7_y_CH4 = get_Straight(ppm_CH4, ratio_CH4)
-    #TODO: alle Steigungen und y-Achsenabschnitte
+    mq4_steigung_CH4, mq4_y_CH4 = get_Straight(ppm_mq4_CH4, ratio_mq4_CH4)
+    mq7_steigung_CO, mq7_y_CO = get_Straight(ppm_mq7_CO, ratio_mq7_CO)
+    mq131_steigung_ozon, mq131_y_ozon = get_Straight(ppm_mq131_Ozon, ratio_mq131_Ozon)
+    mq135_steigung_toluol, mq135_y_toluol = get_Straight(ppm_mq135_toluol, ratio_mq135_toluol)
+    mq135_steigung_NH3, mq135_y_NH3 = get_Straight(ppm_mq135_NH3, ratio_mq135_NH3)
+    mq135_steigung_H2, mq135_y_H2 = get_Straight(ppm_mq135_H2, ratio_mq135_H2)
     with open("curves.txt", "w") as file:
-        #file.write(mq4 daten)
-        file.write("%f\n%f\n%f\n%f\n%f\n%f"
-                    %(mq7_steigung_CO, mq7_y_CO, mq7_steigung_LPG, mq7_y_LPG, mq7_steigung_CH4, mq7_y_CH4))
-        #file.write(mq131 daten)
-        #file.write(mq135 daten)
+        file.write("%f\n%f\n" %(mq4_steigung_CH4, mq4_y_CH4))
+        file.write("%f\n%f\n" %(mq7_steigung_CO, mq7_y_CO))
+        file.write("%f\n%f\n" %(mq131_steigung_ozon, mq131_y_ozon))
+        file.write("%f\n%f\n" %(mq135_steigung_toluol, mq135_y_toluol))
+        file.write("%f\n%f\n" %(mq135_steigung_NH3, mq135_y_NH3))
+        file.write("%f\n%f\n" %(mq135_steigung_H2, mq135_y_H2))
     file.close()
+
+write_curve_data()

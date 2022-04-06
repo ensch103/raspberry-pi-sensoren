@@ -31,7 +31,7 @@ try:
     ro_ozon = float(ro[2])
     ro_lq   = float(ro[3])
 
-    values = helper.read_file("curves.txt")
+    values = helper.read_file("curves_backup.txt")
     mq7_steigung_CO  = float(values[0])
     mq7_y_CO         = float(values[1])
     mq7_steigung_LPG = float(values[2])

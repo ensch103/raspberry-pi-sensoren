@@ -13,11 +13,10 @@ channel_mq7   = 1
 channel_mq131 = 2
 channel_mq135 = 3
 
-#TODO:clean air faktoren
 ro_clean_air_factor_mq4   = 1
-ro_clean_air_factor_mq7   = 2
-ro_clean_air_factor_mq131 = 3
-ro_clean_air_factor_mq135 = 4
+ro_clean_air_factor_mq7   = 1
+ro_clean_air_factor_mq131 = 1
+ro_clean_air_factor_mq135 = 1
 
 try:
     print("Calibrating... Press CTRL+C to abort.")
