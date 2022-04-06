@@ -58,7 +58,8 @@ try:
         rs_mq131 = helper.calc_resistance(volt_mq131, rl_mq131, vc)
         rs_mq135 = helper.calc_resistance(volt_mq135, rl_mq135, vc)
 
-        print("volt_LPG: %.2fV    volt_CO: %.2fV    volt_Ozon: %.2fV    volt_LQ: %.2fV" % (volt_lpg, volt_co, volt_ozon, volt_lq)) #TODO: remove
+        print("value_mq4: %.2fV    value_mq7: %.2fV    value_mq131: %.2fV    value_mq135: %.2fV" % (value_mq4, value_mq7, value_mq131, value_mq135)) #TODO: remove
+        print("volt_mq4: %.2fV    volt_mq7: %.2fV    volt_mq131: %.2fV    volt_mq135: %.2fV" % (volt_mq4, volt_mq7, volt_mq131, volt_mq135)) #TODO: remove
         print("Rs_LPG: %.2f Ohm   Rs_CO: %.2f Ohm   Rs_Ozon: %.2f Ohm   Rs_LQ: %.2f Ohm" % (rs_mq4, rs_mq7, rs_mq131, rs_mq135)) #TODO: remove
 
         #für jedes Gas, das mit jedem der Sensoren gemessen werden kann (pro Sensor mehr als einen ppm-Wert)
