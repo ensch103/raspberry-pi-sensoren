@@ -54,12 +54,10 @@ def write_curve_data():
     mq7_steigung_LPG, mq7_y_LPG = get_Straight(ppm_LPG, ratio_LPG)
     mq7_steigung_CH4, mq7_y_CH4 = get_Straight(ppm_CH4, ratio_CH4)
     #TODO: alle Steigungen und y-Achsenabschnitte
-    with open("curves.txt", "w+") as file: #should create file
+    with open("curves.txt", "w") as file:
         #file.write(mq4 daten)
         file.write("%f\n%f\n%f\n%f\n%f\n%f"
                     %(mq7_steigung_CO, mq7_y_CO, mq7_steigung_LPG, mq7_y_LPG, mq7_steigung_CH4, mq7_y_CH4))
         #file.write(mq131 daten)
         #file.write(mq135 daten)
     file.close()
-
-write_curve_data()

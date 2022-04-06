@@ -1,9 +1,7 @@
 from MCP3008 import MCP3008 as adc
 import helper
-#from mq import *
 from time import sleep
 from datetime import datetime
-#import geradenberechnung
 
 # MQ4: Erdgas- und Methansensor (LPG)
 # MQ7: CO-Sensor (CO)
@@ -26,14 +24,13 @@ channel_mq135 = 3
 
 try:
     print("Press CTRL+C to abort.")
-    #mq = MQ()
-    #get values from files (IPC)
-    #geradenberechnung.write_curve_data()
+
     ro = helper.read_file("calibrated.txt")
     ro_lpg  = float(ro[0])
     ro_co   = float(ro[1])
     ro_ozon = float(ro[2])
     ro_lq   = float(ro[3])
+
     values = helper.read_file("curves.txt")
     mq7_steigung_CO  = float(values[0])
     mq7_y_CO         = float(values[1])
@@ -41,18 +38,17 @@ try:
     mq7_y_LPG        = float(values[3])
     mq7_steigung_CH4 = float(values[4])
     mq7_y_CH4        = float(values[5])
-    #print("ro_lpg:", ro_lpg, "ro_co:", ro_co, "ro_ozon:", ro_ozon, "ro_lq:", ro_lq, "m_co:", mq7_steigung_CO)
+
     while True:
         now = datetime.now()
         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-        print("date and time =", dt_string)
         #TODO: use adc (einkommentieren)
         #value_lpg  = adc.read(channel_mq4)
         #value_co   = adc.read(channel_mq7)
         #value_ozon = adc.read(channel_mq131)
         #value_lq   = adc.read(channel_mq135)
         value_lpg = 100
-        value_co = 1023
+        value_co = 140
         value_ozon = 120
         value_lq = 130
 
@@ -67,8 +63,8 @@ try:
         rs_ozon = helper.calc_resistance(volt_ozon, rl_mq131, vc)
         rs_lq   = helper.calc_resistance(volt_lq, rl_mq135, vc)
 
-        print("volt_LPG: %.2fV    volt_CO: %.2fV    volt_Ozon: %.2fV    volt_LQ: %.2fV" % (volt_lpg, volt_co, volt_ozon, volt_lq))
-        print("Rs_LPG: %.2f Ohm   Rs_CO: %.2f Ohm   Rs_Ozon: %.2f Ohm   Rs_LQ: %.2f Ohm" % (rs_lpg, rs_co, rs_ozon, rs_lq))
+        print("volt_LPG: %.2fV    volt_CO: %.2fV    volt_Ozon: %.2fV    volt_LQ: %.2fV" % (volt_lpg, volt_co, volt_ozon, volt_lq)) #TODO: remove
+        print("Rs_LPG: %.2f Ohm   Rs_CO: %.2f Ohm   Rs_Ozon: %.2f Ohm   Rs_LQ: %.2f Ohm" % (rs_lpg, rs_co, rs_ozon, rs_lq)) #TODO: remove
 
         #für jedes Gas, das mit jedem der Sensoren gemessen werden kann (pro Sensor mehr als einen ppm-Wert)
         #mq4_ppm_lpg  = helper.MQGetPercentage(rs_lpg / ro_lpg, )
@@ -76,10 +72,10 @@ try:
         #mq131_ppm_ozon = helper.MQGetPercentage(rs_ozon / ro_ozon, 2)
         #mq135_ppm_lq   = helper.MQGetPercentage(rs_lq / ro_lq, 3)
 
-        #ACHTUNG: Tag und Uhrzeit der Messung in Dateinamen schreiben, damit Datei nicht überschrieben wird & Datei nicht schreibend öffnen, sondern so, dass falls die Datei schon existiert, etwas angehängt wird
-        with open("results.txt", "a") as file: #TODO: DateTime & fix how to append instead of overwrite
-            print("%s %f" % (dt_string, mq7_ppm_co), file=file)
-        print("ppm co:", mq7_ppm_co)
-        sleep(1)
+        with open("results.txt", "a") as file:
+            file.write("%s %f %f %f %f" % (dt_string, mq4_ppm_lpg, mq7_ppm_co, mq131_ppm_ozon, mq135_ppm_lq))
+        print("ppm co:", mq7_ppm_co) #TODO: remove
+        sleep(2)
+
 except KeyboardInterrupt:
     print("Abbruch durch User")
