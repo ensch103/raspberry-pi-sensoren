@@ -69,7 +69,7 @@ try:
         #mq135_ppm_lq   = helper.MQGetPercentage(rs_lq / ro_lq, 3)
 
         with open("results.txt", "a") as file:
-            file.write("%s %f %f %f %f %f" % (dt_string, rs_mq4, rs_mq7, rs_mq131, rs_mq135, mq7_ppm_co))
+            file.write("%s %f %f %f %f %f\n" % (dt_string, rs_mq4, rs_mq7, rs_mq131, rs_mq135, mq7_ppm_co))
         print("ppm co:", mq7_ppm_co) #TODO: remove
         sleep(2)
 
