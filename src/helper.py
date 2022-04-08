@@ -37,6 +37,6 @@ def calc_resistance(volt, rl, vc):
     return ((vc / volt) - 1) * rl
 
 def MQGetPercentage(rs_ro_ratio, steigung, y_achsenabschnitt):
-    print("rs_ro_ratio:", rs_ro_ratio, "y-Achsenabschnitt:", y_achsenabschnitt, "steigung:", steigung)
+    #print("rs_ro_ratio:", rs_ro_ratio, "y-Achsenabschnitt:", y_achsenabschnitt, "steigung:", steigung)
     concentration_ppm = math.pow(10, (math.log10(rs_ro_ratio) - y_achsenabschnitt) / steigung)
     return concentration_ppm

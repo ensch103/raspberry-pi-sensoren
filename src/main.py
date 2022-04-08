@@ -64,10 +64,9 @@ try:
         rs_mq131 = helper.calc_resistance(volt_mq131, rl_mq131, vc)
         rs_mq135 = helper.calc_resistance(volt_mq135, rl_mq135, vc)
 
-        #TODO: remove prints
-        print("value_mq4: %.2f    value_mq7: %.2f    value_mq131: %.2f    value_mq135: %.2f" % (value_mq4, value_mq7, value_mq131, value_mq135)) #TODO: remove
-        print("volt_mq4: %.2fV    volt_mq7: %.2fV    volt_mq131: %.2fV    volt_mq135: %.2fV" % (volt_mq4, volt_mq7, volt_mq131, volt_mq135)) #TODO: remove
-        print("Rs_LPG: %.2f Ohm   Rs_CO: %.2f Ohm   Rs_Ozon: %.2f Ohm   Rs_LQ: %.2f Ohm" % (rs_mq4, rs_mq7, rs_mq131, rs_mq135)) #TODO: remove
+        #print("value_mq4: %.2f    value_mq7: %.2f    value_mq131: %.2f    value_mq135: %.2f" % (value_mq4, value_mq7, value_mq131, value_mq135)) #TODO: remove
+        #print("volt_mq4: %.2fV    volt_mq7: %.2fV    volt_mq131: %.2fV    volt_mq135: %.2fV" % (volt_mq4, volt_mq7, volt_mq131, volt_mq135)) #TODO: remove
+        #print("Rs_LPG: %.2f Ohm   Rs_CO: %.2f Ohm   Rs_Ozon: %.2f Ohm   Rs_LQ: %.2f Ohm" % (rs_mq4, rs_mq7, rs_mq131, rs_mq135)) #TODO: remove
 
         #für jedes Gas, das mit jedem der Sensoren gemessen werden kann (pro Sensor mehr als einen ppm-Wert)
         mq4_ppm_CH4      = helper.MQGetPercentage(rs_mq4 / ro_mq4, mq4_steigung_CH4, mq4_y_CH4)
@@ -80,9 +79,13 @@ try:
         with open("results.txt", "a") as file:
             file.write("%s %f %f %f %f %f %f %f %f %f %f\n" %(dt_string, rs_mq4, rs_mq7, rs_mq131, rs_mq135,
                          mq4_ppm_CH4, mq7_ppm_CO, mq131_ppm_ozon, mq135_ppm_toluol, mq135_ppm_NH3, mq135_ppm_H2))
-        #TODO: remove prints
-        print("date/time: %s rs_mq4: %f rs_mq7: %f rs_mq131: %f rs_mq135: %f" %(dt_string, rs_mq4, rs_mq7, rs_mq131, rs_mq135))
-        print("CH4: %fppm CO: %fppm Ozon: %fppm Toluol: %fppm NH3: %fppm H2:%fppm\n" %(mq4_ppm_CH4, mq7_ppm_CO, mq131_ppm_ozon, mq135_ppm_toluol, mq135_ppm_NH3, mq135_ppm_H2))
+        #print("date/time: %s rs_mq4: %f rs_mq7: %f rs_mq131: %f rs_mq135: %f" %(dt_string, rs_mq4, rs_mq7, rs_mq131, rs_mq135))
+        print("CH4:    %.2f ppm\n"
+              "CO:     %.2f ppm\n"
+              "Ozon:   %.2f ppm\n"
+              "Toluol: %.2f ppm\n"
+              "NH3:    %.2f ppm\n"
+              "H2:     %.2f ppm\n" %(mq4_ppm_CH4, mq7_ppm_CO, mq131_ppm_ozon, mq135_ppm_toluol, mq135_ppm_NH3, mq135_ppm_H2))
         sleep(2)
 
 except KeyboardInterrupt:
