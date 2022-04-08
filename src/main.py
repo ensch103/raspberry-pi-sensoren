@@ -31,7 +31,7 @@ try:
     ro_mq131 = float(ro[2])
     ro_mq135 = float(ro[3])
 
-    values = helper.read_file("curves_reference.txt")
+    values = helper.read_file("curves.txt")
     mq4_steigung_CH4      = float(values[0])
     mq4_y_CH4             = float(values[1])
     mq7_steigung_CO       = float(values[2])
