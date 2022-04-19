@@ -80,13 +80,13 @@ try:
             file.write("%s %f %f %f %f %f %f %f %f %f %f\n" %(dt_string, rs_mq4, rs_mq7, rs_mq131, rs_mq135,
                          mq4_ppm_CH4, mq7_ppm_CO, mq131_ppm_ozon, mq135_ppm_toluol, mq135_ppm_NH3, mq135_ppm_H2))
         #print("date/time: %s rs_mq4: %f rs_mq7: %f rs_mq131: %f rs_mq135: %f" %(dt_string, rs_mq4, rs_mq7, rs_mq131, rs_mq135))
-        print("CH4:    %.2f ppm\n"
-              "CO:     %.2f ppm\n"
-              "Ozon:   %.2f ppm\n"
-              "Toluol: %.2f ppm\n"
-              "NH3:    %.2f ppm\n"
-              "H2:     %.2f ppm\n" %(mq4_ppm_CH4, mq7_ppm_CO, mq131_ppm_ozon, mq135_ppm_toluol, mq135_ppm_NH3, mq135_ppm_H2))
-        sleep(2)
+        print("CH4:    %f ppm\n"
+              "CO:     %f ppm\n"
+              "Ozon:   %f ppm\n"
+              "Toluol: %f ppm\n"
+              "NH3:    %f ppm\n"
+              "H2:     %f ppm\n" %(mq4_ppm_CH4, mq7_ppm_CO, mq131_ppm_ozon, mq135_ppm_toluol, mq135_ppm_NH3, mq135_ppm_H2))
+        sleep(1)
 
 except KeyboardInterrupt:
     print("Abbruch durch User")
