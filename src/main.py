@@ -45,6 +45,13 @@ try:
     mq135_steigung_H2     = float(values[10])
     mq135_y_H2            = float(values[11])
 
+	fileNr = helper.read_file("fileNr.txt")
+	fileName = "results" + str(fileNr) + ".txt"
+	fileNr = fileNr + 1
+	with open("fileNr.txt", "w") as file:
+            file.write(fileNr)
+	
+
     while True:
         now = datetime.now()
         dt_string   = now.strftime("%d/%m/%Y %H:%M:%S")
@@ -76,7 +83,7 @@ try:
         mq135_ppm_NH3    = helper.MQGetPercentage(rs_mq135 / ro_mq135, mq135_steigung_NH3, mq135_y_NH3)
         mq135_ppm_H2     = helper.MQGetPercentage(rs_mq135 / ro_mq135, mq135_steigung_H2, mq135_y_H2)
 
-        with open("results.txt", "a") as file:
+        with open(fileName, "a") as file:
             file.write("%s %f %f %f %f %f %f %f %f %f %f\n" %(dt_string, rs_mq4, rs_mq7, rs_mq131, rs_mq135,
                          mq4_ppm_CH4, mq7_ppm_CO, mq131_ppm_ozon, mq135_ppm_toluol, mq135_ppm_NH3, mq135_ppm_H2))
         #print("date/time: %s rs_mq4: %f rs_mq7: %f rs_mq131: %f rs_mq135: %f" %(dt_string, rs_mq4, rs_mq7, rs_mq131, rs_mq135))
