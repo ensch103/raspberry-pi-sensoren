@@ -45,12 +45,12 @@ try:
     mq135_steigung_H2     = float(values[10])
     mq135_y_H2            = float(values[11])
 
-	fileNr = helper.read_file("fileNr.txt")
-	fileName = "results" + str(fileNr) + ".txt"
-	fileNr = fileNr + 1
-	with open("fileNr.txt", "w") as file:
-            file.write(fileNr)
-	
+    fileNr = int(helper.read_file("fileNr.txt")[0])
+    toInc = fileNr
+    fileName = "results" + str(fileNr) + ".txt"
+    toInc = toInc + 1
+    with open("fileNr.txt", "w") as file:
+        file.write(str(toInc))
 
     while True:
         now = datetime.now()
