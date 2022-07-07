@@ -9,7 +9,7 @@ MQ131_RO_CLEAN_AIR_FACTOR = 9.83
 MQ135_RO_CLEAN_AIR_FACTOR = 9.83
 
 CALIBARAION_SAMPLE_TIMES = 50  # define how many samples you are going to take in the calibration phase
-CALIBRATION_SAMPLE_INTERVAL = 500  # define the time interval(in miliseconds) between each samples in the cablibration phase
+CALIBRATION_SAMPLE_INTERVAL = 500  # define the time interval (in miliseconds) between each sample in the cablibration phase
 
 def MQCalibration(mq_pin, ro_clean_air_factor, rl, vc):
     adc = MCP3008()
